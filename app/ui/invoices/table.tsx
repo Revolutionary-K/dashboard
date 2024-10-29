@@ -1,8 +1,8 @@
-import Image from 'next/image';
-import { UpdateInvoice, DeleteInvoice } from '@/app/ui/invoices/buttons';
-import InvoiceStatus from '@/app/ui/invoices/status';
-import { formatDateToLocal, formatCurrency } from '@/app/lib/utils';
-import { fetchFilteredInvoices } from '@/app/lib/data';
+import Image from "next/image";
+import { UpdateInvoice, DeleteInvoice } from "@/app/ui/invoices/buttons";
+import InvoiceStatus from "@/app/ui/invoices/status";
+import { formatDateToLocal, formatCurrency } from "@/app/lib/utils";
+import { fetchFilteredInvoices } from "@/app/lib/data";
 
 export default async function InvoicesTable({
   query,
@@ -11,7 +11,7 @@ export default async function InvoicesTable({
   query: string;
   currentPage: number;
 }) {
-  debugger
+  debugger;
   const invoices = await fetchFilteredInvoices(query, currentPage);
 
   return (
@@ -20,26 +20,28 @@ export default async function InvoicesTable({
         <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
           <div className="md:hidden"></div>
           <table>
-            <tr>
-              <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
-                Customer
-              </th>
-              <th scope="col" className="px-3 py-5 font-medium">
-                Email
-              </th>
-              <th scope="col" className="px-3 py-5 font-medium">
-                Amount
-              </th>
-              <th scope="col" className="px-3 py-5 font-medium">
-                Date
-              </th>
-              <th scope="col" className="px-3 py-5 font-medium">
-                Status
-              </th>
-              <th scope="col" className="relative py-3 pl-6 pr-3">
-                <span className="sr-only">Edit</span>
-              </th>
-            </tr>
+            <thead>
+              <tr>
+                <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
+                  Customer
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Email
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Amount
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Date
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Status
+                </th>
+                <th scope="col" className="relative py-3 pl-6 pr-3">
+                  <span className="sr-only">Edit</span>
+                </th>
+              </tr>
+            </thead>
             <tbody className="bg-white">
               {invoices.map((invoice) => (
                 <tr
